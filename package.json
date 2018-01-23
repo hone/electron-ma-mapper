@@ -1,11 +1,17 @@
 {
-  "name": "your-app",
+  "name": "electron-ma-mapper",
   "version": "0.1.0",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-build-env neon build neon-ma-mapper"
   },
   "dependencies": {
-    "electron": "^1.7.10"
+    "electron": "^1.7.10",
+    "neon-ma-mapper": "./vendor/neon-ma-mapper/"
+  },
+  "devDependencies": {
+    "electron-build-env": "^0.2.0",
+    "neon-cli": "^0.1.22"
   }
 }

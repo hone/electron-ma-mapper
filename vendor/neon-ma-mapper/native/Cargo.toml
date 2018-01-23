@@ -1,0 +1,17 @@
+[package]
+name = "neon-ma-mapper"
+version = "0.1.0"
+authors = ["Terence Lee <hone02@gmail.com>"]
+license = "MIT"
+build = "build.rs"
+
+[lib]
+name = "neon_ma_mapper"
+crate-type = ["dylib"]
+
+[build-dependencies]
+neon-build = "0.1.22"
+
+[dependencies]
+neon = "0.1.22"
+maximum_apocalypse_map_generator = { git = "https://github.com/hone/maximum_apocalypse_map_generator" }
