@@ -48,7 +48,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 [[package]]
 name = "maximum_apocalypse_map_generator"
 version = "0.1.0"
-source = "git+https://github.com/hone/maximum_apocalypse_map_generator#40fa86d237b5e12f739d6f680ffa7e945fe04be3"
+source = "git+https://github.com/hone/maximum_apocalypse_map_generator#b44c94cda80ae96c03e97d49e2791fbe7aa19409"
 dependencies = [
  "rand 0.4.2 (registry+https://github.com/rust-lang/crates.io-index)",
 ]

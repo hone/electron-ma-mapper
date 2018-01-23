@@ -13,9 +13,12 @@ fn fetch_arg<'a, T: neon::js::Value>(call: &mut Call<'a>, index: i32) -> JsResul
 
 fn ma_map(mut call: Call) -> JsResult<JsArrayBuffer> {
     let num_tiles = fetch_arg::<JsInteger>(&mut call, 0)?.value() as usize;
-    let board = Board::new(num_tiles);
-    let buffer_size = (2 * num_tiles * num_tiles) as u32;
+    let width = fetch_arg::<JsInteger>(&mut call, 1)?.value() as usize;
+    let height = fetch_arg::<JsInteger>(&mut call, 2)?.value() as usize;
+    let board = Board::new(num_tiles, width, height);
+    let buffer_size = (2 * width * height) as u32;
     let mut js_map = JsArrayBuffer::new(call.scope, buffer_size)?;
+
     for (index, tile_option) in board.data.iter().enumerate() {
         let js_value = match tile_option {
             &Some(tile) => match tile.value {

@@ -1,13 +1,16 @@
 const mapper = require('neon-ma-mapper');
-const rect_size = 30;
-const rect_spacing = 5;
+const rect_size = 10;
+const rect_spacing = 2;
 
-function render(ctx, num_tiles) {
-  var board = mapper(num_tiles);
+function render(canvas, num_tiles, width, height) {
+  var ctx = canvas.getContext("2d");
+  var board = mapper(num_tiles, width, height);
 
-  for(var y = 0; y < num_tiles; y++) {
-    for(var x = 0; x < num_tiles; x++) {
-      var index = x + y * num_tiles;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  for(var y = 0; y < width; y++) {
+    for(var x = 0; x < height; x++) {
+      var index = x + y * height;
       var value = board[index];
       console.log(`${x}, ${y}: ${value}`);
       if(value == 1) {
@@ -23,7 +26,11 @@ function render(ctx, num_tiles) {
 }
 
 (function() {
-  var myCanvas = document.getElementById("screen");
-  var ctx = myCanvas.getContext("2d");
-  render(ctx, 8);
+  document.getElementById("generate").onclick = function generateOnClick() {
+    var canvas = document.getElementById("screen");
+    var num_tiles = parseInt(document.getElementById("num_tiles").value);
+    var width = parseInt(document.getElementById("width").value);
+    var height = parseInt(document.getElementById("height").value);
+    render(canvas, num_tiles, width, height);
+  }
 })();
